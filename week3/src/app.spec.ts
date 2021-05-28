@@ -19,4 +19,4 @@ describe ('Test for app.ts', () => {
         expect(offenseRank).to.eq(3);
         expect(defenseRank).to.eq(2);
     })
-})
+})i
