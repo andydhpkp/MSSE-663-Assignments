@@ -8,11 +8,29 @@
  * - Then Hoist the callback function.
  *
  */
-const things = ['thing1', 'thing2'];
+export const things = ['thing1', 'thing2'];
 
 // create callback here
+export const callbackThings = (id: number, name: string) =>
+{
+    var eachThing = {id: (id+1), name: name};
+    return eachThing;
+}
+
 
 // create map here
+
+export const mapThings = (begMap: Array<any>) =>
+{
+    var finalMap = new Array<any>();
+    finalMap = begMap.map(x => callbackThings(begMap.indexOf(x), x));
+    return finalMap;
+}
+
+export const mapped = mapThings(things);
+
+console.log(mapped);
+
 
 /**
  * #2 Higher order then curry.
@@ -23,3 +41,16 @@ const things = ['thing1', 'thing2'];
  */
 
 // create function here
+
+export const curryFunction = (key: string) => (fil: Array<any>) =>
+{
+    var newFil = new Array<any>();
+    var num: number = parseInt(key);
+    newFil = fil.filter((x, y) =>
+    {
+        return(x.id === num);
+    });
+    return newFil;
+}
+
+console.log(curryFunction("1")(mapThings(things)));
